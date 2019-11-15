@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using tabuleiro;
 
 namespace Xadrez_Console
@@ -15,7 +13,7 @@ namespace Xadrez_Console
                 {
                     if (tab.peca(i,j) == null)
                     {
-                        Console.Write(" -");
+                        Console.Write("- ");
                     }
                     else
                     {
