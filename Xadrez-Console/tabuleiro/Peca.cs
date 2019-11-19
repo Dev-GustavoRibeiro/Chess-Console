@@ -21,5 +21,26 @@
         {
             qteMovimentos++;
         }
+
+        public bool existeMovimentosPossiveis(Posicao pos)
+        {
+            bool[,] mat = movimentosPossiveis(pos);
+            for (int i = 0; i < tabuleiro.linhas; i++)
+            {
+                for (int j = 0; j < tabuleiro.colunas; j++)
+                {
+                    if (mat[i,j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;   
+        }
+
+        public bool podeMoverPara(Posicao pos, Posicao origem)
+        {
+            return movimentosPossiveis(origem)[pos.Linha, pos.Coluna];
+        }
     }
 }
