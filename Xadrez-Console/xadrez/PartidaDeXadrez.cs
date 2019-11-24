@@ -37,6 +37,29 @@ namespace xadrez
             }
         }
 
+        public Cor adversario()
+        {
+            if (jogadorAtual == Cor.Amarelo)
+            {
+                return Cor.Branco;
+            }
+            else
+            {
+                return Cor.Amarelo;
+            }
+        }
+
+        public void xequemate()
+        {
+            foreach (Peca x in capturadas)
+            {
+                if (x is Rei)
+                {
+                    terminada = true;
+                }
+            }
+        }
+
         public void realizaJogada(Posicao origem, Posicao destino)
         {
             executarMovimento(origem, destino);
