@@ -76,6 +76,7 @@ namespace xadrez
                 pos.definirValores(pos.Linha + 1, pos.Coluna - 1);
             }
 
+            pos = new Posicao(origem.Linha, origem.Coluna);
             // acima
             pos.definirValores(pos.Linha - 1, pos.Coluna);
             while (tabuleiro.posicaoValida(pos) && podeMover(pos))
@@ -85,7 +86,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha - 1;
+                pos.definirValores(pos.Linha - 1, pos.Coluna);
             }
 
             pos = new Posicao(origem.Linha, origem.Coluna);
@@ -98,7 +99,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha + 1;
+                pos.definirValores(pos.Linha + 1, pos.Coluna);
             }
 
             pos = new Posicao(origem.Linha, origem.Coluna);
@@ -111,7 +112,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Coluna = pos.Coluna + 1;
+                pos.definirValores(pos.Linha, pos.Coluna + 1);
             }
 
             pos = new Posicao(origem.Linha, origem.Coluna);
@@ -124,7 +125,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Coluna = pos.Coluna - 1;
+                pos.definirValores(pos.Linha, pos.Coluna - 1);
             }
 
             return mat;
