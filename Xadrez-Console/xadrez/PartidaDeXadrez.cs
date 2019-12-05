@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using tabuleiro;
 
 namespace xadrez
@@ -103,11 +101,25 @@ namespace xadrez
 
         public void realizaJogada(Posicao origem, Posicao destino)
         {
+            Peca p = tab.peca(origem);
+
             executarMovimento(origem, destino);
+
+            // #JogadaEspecial promocao
+            if (p is Peao)
+            {
+                if ((p.cor == Cor.Branco && destino.Linha == 0) || (p.cor == Cor.Amarelo && destino.Linha == 7))
+                {
+                    p = tab.retirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(p.cor, tab);
+                    tab.ColocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
+            }
+
             turno++;
             mudaJogador();
-
-            Peca p = tab.peca(destino);
 
             // #JogadaEspecial en passant
             if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
